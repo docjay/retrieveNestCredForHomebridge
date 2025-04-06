@@ -31,6 +31,18 @@ ${cookies}
       console.error(`Error opening the file: ${error.message}`);
     } else {
       console.log(`Opened ${outputFilePath} in your default text editor.`);
+      
+      // Delete the file after a short delay
+      // This gives the text editor enough time to fully load the content
+      setTimeout(() => {
+        fs.unlink(outputFilePath, (err) => {
+          if (err) {
+            console.error(`Error deleting file: ${err.message}`);
+          } else {
+            console.log(`Successfully deleted: ${outputFilePath}`);
+          }
+        });
+      }, 1500); // Delete after 1.5 seconds
     }
   });
 }
