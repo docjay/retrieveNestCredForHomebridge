@@ -2,6 +2,26 @@ const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
 const { exec } = require('child_process');
+const { spawnSync } = require('child_process');
+
+// Check if browsers are installed at startup
+function ensureBrowsersInstalled() {
+  console.log('Ensuring Playwright browsers are properly installed...');
+  try {
+    const result = spawnSync('npx', ['playwright', 'install', 'chromium'], { 
+      stdio: 'inherit',
+      encoding: 'utf-8'
+    });
+    if (result.error) {
+      console.error('Error installing browsers:', result.error);
+    }
+  } catch (error) {
+    console.error('Failed to check browser installation:', error);
+  }
+}
+
+// Check browsers before proceeding
+ensureBrowsersInstalled();
 
 // Variables to store captured data
 let capturedIssueToken = null;
