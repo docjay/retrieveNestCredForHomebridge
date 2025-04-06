@@ -1,8 +1,39 @@
 const { chromium } = require('playwright');
+const fs = require('fs');
+const path = require('path');
+const { exec } = require('child_process');
 
 // Variables to store captured data
 let capturedIssueToken = null;
 let capturedCookies = null;
+
+// File path to save the captured data
+const outputFilePath = path.join(__dirname, 'nest_credentials.txt');
+
+// Function to write data to file
+function writeDataToFile(issueToken, cookies) {
+  const timestamp = new Date().toLocaleString();
+  const fileContent = `[Nest Credentials - Generated on ${timestamp}]
+===================================================
+ISSUE TOKEN:
+${issueToken}
+
+COOKIES:
+${cookies}
+===================================================`;
+
+  fs.writeFileSync(outputFilePath, fileContent);
+  console.log(`Data saved to: ${outputFilePath}`);
+  
+  // Open the file automatically using the default text editor
+  exec(`open "${outputFilePath}"`, (error) => {
+    if (error) {
+      console.error(`Error opening the file: ${error.message}`);
+    } else {
+      console.log(`Opened ${outputFilePath} in your default text editor.`);
+    }
+  });
+}
 
 /**
  * Function to start capturing filtered network logs
@@ -184,6 +215,9 @@ async function run() {
         console.log('\nCOOKIES:');
         console.log(capturedCookies);
         console.log('=================================================');
+        
+        // Write the captured data to a file
+        writeDataToFile(capturedIssueToken, capturedCookies);
         
         console.log('All data has been captured. Waiting 5 seconds before closing browser...');
         

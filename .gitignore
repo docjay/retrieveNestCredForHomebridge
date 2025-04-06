@@ -29,3 +29,6 @@ Thumbs.db
 # Build outputs
 /dist
 /build
+
+# Credentials file
+nest_credentials.txt
