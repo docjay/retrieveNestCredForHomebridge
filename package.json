@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/docjay/nest.git"
+    "url": "git+https://github.com/docjay/retrieveNestCredForHomebridge.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/docjay/nest/issues"
+    "url": "https://github.com/docjay/retrieveNestCredForHomebridge/issues"
   },
-  "homepage": "https://github.com/docjay/nest#readme",
+  "homepage": "https://github.com/docjay/retrieveNestCredForHomebridge#readme",
   "description": "",
   "dependencies": {
     "playwright": "^1.51.1"
