@@ -1,0 +1,23 @@
+{
+  "name": "nest",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/docjay/nest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/docjay/nest/issues"
+  },
+  "homepage": "https://github.com/docjay/nest#readme",
+  "description": "",
+  "dependencies": {
+    "playwright": "^1.51.1"
+  }
+}
